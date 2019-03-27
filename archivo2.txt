@@ -1,0 +1,13 @@
+<accion nombre="MODIFICAR_PAGINA">
+    <parametros>
+              <parametro nombre="ID">
+                  [_productos]
+              </parametro>
+<parametro nombre="TITULO">
+                  [_productos]
+              </parametro>
+    </parametros>
+     <etiquetas>
+	<ETIQUETA VALOR="$TEXTO"/>
+    </etiquetas>
+</accion>

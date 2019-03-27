@@ -8,113 +8,121 @@ package Analizadores;
 /** CUP generated class containing symbol constants. */
 public class sym {
   /* terminals */
-  public static final int CORCHETE_CENTRAR = 36;
-  public static final int CORCHETE_VIDEO = 32;
-  public static final int INICIO_ATRIBUTO_PADRE = 47;
-  public static final int FIN_PARAMETRO = 14;
-  public static final int CORCHETE_IMAGEN = 31;
-  public static final int CORCHETE_JUSTIFICAR = 37;
-  public static final int INICIO_ATRIBUTO_ETIQUETAS = 48;
-  public static final int FIN_ACCIONES = 12;
-  public static final int INICIO_PARAMETRO_FECHA_MODIFICACION = 17;
-  public static final int INICIO_ATRIBUTO_ALTURA = 45;
-  public static final int INICIO_ATRIBUTOS = 50;
-  public static final int INICIO_MODIFICAR_COMPONENTE = 9;
-  public static final int INICIO_ATRIBUTO_COLOR = 43;
-  public static final int INICIO_PARAMETRO_ID = 13;
-  public static final int INICIO_PARAMETROS = 24;
-  public static final int INICIO_PARAMETRO_USUARIO_CREACION = 15;
-  public static final int INICIO_ETIQUETA_ID = 26;
-  public static final int INICIO_BORRAR_COMPONENTE = 8;
-  public static final int CORCHETE_MENU = 33;
-  public static final int INICIO_AGREGAR_COMPONENTE = 7;
-  public static final int FIN_ETIQUETAS = 28;
-  public static final int CORCHETE_DERECHA = 34;
-  public static final int INICIO_PARAMETRO_PADRE = 20;
-  public static final int CORCHETE_ID = 40;
-  public static final int CORCHETE_PARRAFO = 30;
-  public static final int INICIO_NUEVO_SITIO_WEB = 2;
-  public static final int INICIO_PARAMETRO_PAGINA = 22;
-  public static final int INICIO_ACCIONES = 11;
+  public static final int DIAGONAL = 16;
+  public static final int BORRAR_PAGINA = 20;
+  public static final int ALINEACION = 34;
+  public static final int PAGINA = 32;
+  public static final int PARAMETROS = 6;
+  public static final int ANGULAR_ABIERTO = 2;
+  public static final int CORCHETE_CERRADO = 55;
+  public static final int NOMBRE = 8;
+  public static final int ANCHO = 39;
+  public static final int NUMEROS = 44;
+  public static final int IZQUIERDA = 47;
+  public static final int VIDEO = 52;
+  public static final int ETIQUETAS = 11;
+  public static final int FECHA = 56;
+  public static final int MENU = 53;
+  public static final int IGUAL = 14;
+  public static final int CENTRAR = 48;
+  public static final int TITULO = 30;
+  public static final int PADRE = 40;
+  public static final int ID = 25;
+  public static final int NUEVA_PAGINA = 19;
+  public static final int CORCHETE_ABIERTO = 41;
   public static final int EOF = 0;
-  public static final int INICIO_ATRIBUTO_ALINEACION = 42;
-  public static final int INICIO_BORRAR_PAGINA = 5;
-  public static final int INICIO_PARAMETRO_CLASE = 23;
-  public static final int INICIO_ATRIBUTO_TEXTO = 41;
-  public static final int INICIO_PARAMETRO_FECHA_CREACION = 16;
+  public static final int BORRAR_COMPONENTE = 23;
+  public static final int CLASE = 33;
   public static final int error = 1;
-  public static final int INICIO_NUEVA_PAGINA = 4;
-  public static final int CORCHETE_IZQUIERDA = 35;
-  public static final int CORCHETE_ETIQUETAS = 52;
-  public static final int INICIO_BORRAR_SITIO_WEB = 3;
-  public static final int FIN_ACCION = 10;
-  public static final int CORCHETE_TITULO = 29;
-  public static final int INICIO_ATRIBUTO_ANCHO = 46;
-  public static final int INICIO_PARAMETRO_TITULO = 19;
-  public static final int FIN_ATRIBUTOS = 51;
-  public static final int FIN_PARAMETROS = 25;
-  public static final int CORCHETE_NUMEROS = 39;
-  public static final int INICIO_ETIQUETAS = 27;
-  public static final int INICIO_PARAMETRO_SITIO = 21;
-  public static final int FIN_ATRIBUTO = 49;
-  public static final int CORCHETE_HEXADECIMAL = 38;
-  public static final int INICIO_MODIFICAR_PAGINA = 6;
-  public static final int INICIO_ATRIBUTO_ORIGEN = 44;
-  public static final int INICIO_PARAMETRO_USUARIO_MODIFICACION = 18;
+  public static final int COMILLA = 15;
+  public static final int PIPE = 45;
+  public static final int FECHA_MODIFICACION = 28;
+  public static final int URL = 54;
+  public static final int ATRIBUTOS = 9;
+  public static final int BORRAR_SITIO_WEB = 18;
+  public static final int IDD = 42;
+  public static final int ATRIBUTO = 10;
+  public static final int ACCION = 5;
+  public static final int COLOR = 36;
+  public static final int USUARIO_MODIFICACION = 29;
+  public static final int FECHA_CREACION = 27;
+  public static final int NUEVO_SITIO_WEB = 17;
+  public static final int USUARIO_CREACION = 26;
+  public static final int VALOR = 13;
+  public static final int ANGULAR_CERRADO = 3;
+  public static final int IMAGEN = 51;
+  public static final int DERECHA = 46;
+  public static final int PARRAFO = 50;
+  public static final int ORIGEN = 37;
+  public static final int MODIFICAR_COMPONENTE = 24;
+  public static final int AGREGAR_COMPONENTE = 22;
+  public static final int HEXADECIMAL = 43;
+  public static final int PARAMETRO = 7;
+  public static final int ACCIONES = 4;
+  public static final int SITIO = 31;
+  public static final int TEXTO = 35;
+  public static final int ETIQUETA = 12;
+  public static final int JUSTIFICAR = 49;
+  public static final int ALTURA = 38;
+  public static final int MODIFICAR_PAGINA = 21;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
-  "INICIO_NUEVO_SITIO_WEB",
-  "INICIO_BORRAR_SITIO_WEB",
-  "INICIO_NUEVA_PAGINA",
-  "INICIO_BORRAR_PAGINA",
-  "INICIO_MODIFICAR_PAGINA",
-  "INICIO_AGREGAR_COMPONENTE",
-  "INICIO_BORRAR_COMPONENTE",
-  "INICIO_MODIFICAR_COMPONENTE",
-  "FIN_ACCION",
-  "INICIO_ACCIONES",
-  "FIN_ACCIONES",
-  "INICIO_PARAMETRO_ID",
-  "FIN_PARAMETRO",
-  "INICIO_PARAMETRO_USUARIO_CREACION",
-  "INICIO_PARAMETRO_FECHA_CREACION",
-  "INICIO_PARAMETRO_FECHA_MODIFICACION",
-  "INICIO_PARAMETRO_USUARIO_MODIFICACION",
-  "INICIO_PARAMETRO_TITULO",
-  "INICIO_PARAMETRO_PADRE",
-  "INICIO_PARAMETRO_SITIO",
-  "INICIO_PARAMETRO_PAGINA",
-  "INICIO_PARAMETRO_CLASE",
-  "INICIO_PARAMETROS",
-  "FIN_PARAMETROS",
-  "INICIO_ETIQUETA_ID",
-  "INICIO_ETIQUETAS",
-  "FIN_ETIQUETAS",
-  "CORCHETE_TITULO",
-  "CORCHETE_PARRAFO",
-  "CORCHETE_IMAGEN",
-  "CORCHETE_VIDEO",
-  "CORCHETE_MENU",
-  "CORCHETE_DERECHA",
-  "CORCHETE_IZQUIERDA",
-  "CORCHETE_CENTRAR",
-  "CORCHETE_JUSTIFICAR",
-  "CORCHETE_HEXADECIMAL",
-  "CORCHETE_NUMEROS",
-  "CORCHETE_ID",
-  "INICIO_ATRIBUTO_TEXTO",
-  "INICIO_ATRIBUTO_ALINEACION",
-  "INICIO_ATRIBUTO_COLOR",
-  "INICIO_ATRIBUTO_ORIGEN",
-  "INICIO_ATRIBUTO_ALTURA",
-  "INICIO_ATRIBUTO_ANCHO",
-  "INICIO_ATRIBUTO_PADRE",
-  "INICIO_ATRIBUTO_ETIQUETAS",
-  "FIN_ATRIBUTO",
-  "INICIO_ATRIBUTOS",
-  "FIN_ATRIBUTOS",
-  "CORCHETE_ETIQUETAS"
+  "ANGULAR_ABIERTO",
+  "ANGULAR_CERRADO",
+  "ACCIONES",
+  "ACCION",
+  "PARAMETROS",
+  "PARAMETRO",
+  "NOMBRE",
+  "ATRIBUTOS",
+  "ATRIBUTO",
+  "ETIQUETAS",
+  "ETIQUETA",
+  "VALOR",
+  "IGUAL",
+  "COMILLA",
+  "DIAGONAL",
+  "NUEVO_SITIO_WEB",
+  "BORRAR_SITIO_WEB",
+  "NUEVA_PAGINA",
+  "BORRAR_PAGINA",
+  "MODIFICAR_PAGINA",
+  "AGREGAR_COMPONENTE",
+  "BORRAR_COMPONENTE",
+  "MODIFICAR_COMPONENTE",
+  "ID",
+  "USUARIO_CREACION",
+  "FECHA_CREACION",
+  "FECHA_MODIFICACION",
+  "USUARIO_MODIFICACION",
+  "TITULO",
+  "SITIO",
+  "PAGINA",
+  "CLASE",
+  "ALINEACION",
+  "TEXTO",
+  "COLOR",
+  "ORIGEN",
+  "ALTURA",
+  "ANCHO",
+  "PADRE",
+  "CORCHETE_ABIERTO",
+  "IDD",
+  "HEXADECIMAL",
+  "NUMEROS",
+  "PIPE",
+  "DERECHA",
+  "IZQUIERDA",
+  "CENTRAR",
+  "JUSTIFICAR",
+  "PARRAFO",
+  "IMAGEN",
+  "VIDEO",
+  "MENU",
+  "URL",
+  "CORCHETE_CERRADO",
+  "FECHA"
   };
 }
 
