@@ -12,7 +12,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -58,6 +60,29 @@ public class Acciones {
         usuarios.add(usuario);
         actualizarArchivo();
     }
+    
+    public void borrarUsuario(String usuario){
+        for (int i = 0; i < usuarios.size(); i++) {
+            if(usuarios.get(i).getNombre().equals(usuario)){
+                usuarios.remove(i);
+                break;
+            }
+        }
+        JOptionPane.showMessageDialog(null, "SE ELIMINO CORRECTAMENTE EL USUAIRO:"+usuario);
+        actualizarArchivo();
+    }
+    
+    public void llenarUsuarios(DefaultTableModel modelo){
+        String datos[] = new String[2];
+        for (int i = 0; i < usuarios.size(); i++) {
+            datos[0] = usuarios.get(i).getNombre();
+            datos[1] = usuarios.get(i).getContrasena();
+            modelo.addRow(datos);
+            
+        }
+    }
+    
+    
     
     public void actualizarArchivo(){
         try {

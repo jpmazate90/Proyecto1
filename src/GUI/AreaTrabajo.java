@@ -2,7 +2,9 @@
 package GUI;
 
 import Analizadores.AnalizadorLexico1;
+import Analizadores.AnalizadorLexicoError;
 import Analizadores.parser;
+import Analizadores.parser3;
 import Logica.Acciones;
 import Objetos.Mandar;
 import java.io.DataInputStream;
@@ -69,21 +71,28 @@ public class AreaTrabajo extends javax.swing.JInternalFrame implements Runnable{
             System.out.println("Entre");
             ServerSocket servidor = new ServerSocket(8080);
             Socket cliente;
+            AnalizadorLexicoError lex;
+            parser3 parser;
+            StringReader reader;
 
             while (true) {
+                
                 cliente = servidor.accept();
                 DataInputStream flujo = new DataInputStream(cliente.getInputStream());
                 String mensajeRecibido;
                 mensajeRecibido =  flujo.readUTF();
-                textoEntrada.append("\n"+mensajeRecibido);
+                reader = new StringReader(mensajeRecibido);
+                lex = new AnalizadorLexicoError(reader);
+                parser = new parser3(lex, textoEntrada);
+                parser.parse();
                 cliente.close();
-                
             }
 
         } catch (IOException ex) {
             ex.printStackTrace();
         }catch (Exception ex) {
-            System.out.println("Surgio un error al leer el mensaje del cliente");
+            textoEntrada.append("\nOCURRIO UN ERROR AL LEER EL MENSAJE DEL SERVIDOR");
+            
         }
     }
 

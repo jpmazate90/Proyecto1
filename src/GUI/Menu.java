@@ -17,6 +17,8 @@ public class Menu extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -32,6 +34,18 @@ public class Menu extends javax.swing.JFrame {
         fileMenu.add(jMenuItem1);
 
         menuBar.add(fileMenu);
+
+        jMenu1.setText("VER USUARIOS");
+
+        jMenuItem2.setText("USUARIOS");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        menuBar.add(jMenu1);
 
         setJMenuBar(menuBar);
 
@@ -55,6 +69,12 @@ public class Menu extends javax.swing.JFrame {
         sesion.show();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        VerUsuarios ver  = new VerUsuarios(escritorio);
+        this.escritorio.add(ver);
+        ver.show();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     public void limpiar(){
         this.escritorio.removeAll();
         this.repaint();
@@ -65,7 +85,9 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
 
