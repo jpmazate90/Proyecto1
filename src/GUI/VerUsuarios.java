@@ -14,10 +14,10 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class VerUsuarios extends javax.swing.JInternalFrame {
-
-    JDesktopPane escritorio;
-    TablaModelo modelo;
-    Acciones accion;
+// atributos privados de la clase
+    private JDesktopPane escritorio;
+    private TablaModelo modelo;
+    private Acciones accion;
     
     private File archivoUsuarios;
     private final String DIRECCION = "usuarios.txt";
@@ -25,7 +25,7 @@ public class VerUsuarios extends javax.swing.JInternalFrame {
     private AnalizadorLexicoUsuarios lexUsuarios;
     private parser2 parser;
 
-    
+    // constructor de la clase
     public VerUsuarios(JDesktopPane escritorio) {
         initComponents();
         accion = new Acciones();
@@ -39,20 +39,21 @@ public class VerUsuarios extends javax.swing.JInternalFrame {
         Acciones.setUsuarios(usuarios);
         accion = new Acciones();
         archivoUsuarios = new File(DIRECCION);
-        try {
+        try {// carga los datos de los usuarios
             reader = new FileReader(archivoUsuarios);
             lexUsuarios = new AnalizadorLexicoUsuarios(reader);
             parser = new parser2(lexUsuarios);
             parser.parse();
             llenarTabla();
         } catch (FileNotFoundException ex) {
+            JOptionPane.showConfirmDialog(null,"PROBLEMA AL ABRIR EL ARCHIVO DE USUARIOS");
             System.out.println("PROBLEMA AL ABRIR EL ARCHIVO DE USUARIOS");
         } catch (Exception ex) {
             System.out.println("HUBO UN PROBLEMA AL PARSEAR LOS USUARIOS");
         }
     }
     
-    public void borrarDatos(){
+    public void borrarDatos(){// borra los datos de la tabla
         for(int i=0;i<modelo.getRowCount();i++){
             modelo.removeRow(i);
             if(modelo.getRowCount()>0){
@@ -60,16 +61,16 @@ public class VerUsuarios extends javax.swing.JInternalFrame {
             }
         }
     }
-    
+    // sirve para recargar la tabla
     public void recargarTabla(){
         borrarDatos();
         llenarTabla();
     }
-    
+    // llena la tabla con la informacion
     public void llenarTabla(){
         accion.llenarUsuarios(modelo);
     }
-    
+    // crea un objeto inicio sesion
     public void crear(){
         InicioSesion sesion = new InicioSesion(escritorio);
         this.escritorio.add(sesion);
@@ -77,7 +78,7 @@ public class VerUsuarios extends javax.swing.JInternalFrame {
         
         
     }
-    
+    // sirve para eliminar un usuario
     public void eliminar(){
         if(textoUsuario.getText()==null||textoUsuario.getText().equals("")){
             JOptionPane.showMessageDialog(null,"NO SE HA SELECCIONADO NINGUN USUARIO DE LA TABLA, \nDELE CLICK ENCIMA AL USUARIO QUE QUIERE ELIMINAR");

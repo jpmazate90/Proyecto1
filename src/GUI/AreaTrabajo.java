@@ -33,50 +33,50 @@ public class AreaTrabajo extends javax.swing.JInternalFrame implements Runnable{
         Thread hilo = new Thread(this);
         hilo.start();
     }
-    
+    // sirve para validar el codigo 
     public void validarCodigo(){
         try {
-            Acciones.setERROR(false);
+            Acciones.setERROR(false);// reinicia si hubieron errores
             String texto = textoSalida.getText();
             StringReader reader = new StringReader(texto);
             AnalizadorLexico1 lex = new AnalizadorLexico1(reader, textoEntrada);
             parser parser = new parser(lex, textoEntrada);
-            parser.parse();
+            parser.parse();// obtiene la informacion del parser 
             if(Acciones.isERROR()==false){
-                try{
+                try{// si no existieron errores entonces manda el mensaje al servidor 
                 Mandar mandar = new Mandar(texto, this.usuario);
-                Socket cliente = new Socket("localhost", 9090);
+                Socket cliente = new Socket("localhost", 9090);// por medio de puerto 9090
                 ObjectOutputStream flujo  = new ObjectOutputStream(cliente.getOutputStream());
-                flujo.writeObject(mandar);
-                cliente.close();
-                
+                flujo.writeObject(mandar);// manda el mensaje 
+                cliente.close();// cierra el socket
+                // dice que se mando el mensaje
                 textoEntrada.append("\n"+"MENSAJE BIEN ESCRITO SE MANDARA AL SERVIDOR");
                 }catch(Exception e){
-                    e.printStackTrace();
-                    textoEntrada.append("\n"+"NO SE LOGRO CONECTAR AL SERVIDOR POR EL PUERTO 80");
+                    e.printStackTrace();//muestra el error
+                    textoEntrada.append("\n"+"NO SE LOGRO CONECTAR AL SERVIDOR");
                 }
-            }else{
+            }else{//muestra el error
                 textoEntrada.append("\n"+"NO SE PUEDE MANDAR AL SERVIDOR YA QUE TIENE ERRORES");
             }
             
         } catch (Exception ex) {
             ex.printStackTrace();
-            System.out.println("ERROR AL PARSEAR");
+            System.out.println("ERROR AL PARSEAR");//muestra el error
             textoEntrada.append("\n"+"NO SE PUEDE MANDAR AL SERVIDOR YA QUE TIENE ERRORES DE PARSEO");
         }
     }
     
      public void run() {
-        try {
+        try {// hilo con el cual el cliente recibe mensajes de respuesta del servidor
             System.out.println("Entre");
             ServerSocket servidor = new ServerSocket(8080);
-            Socket cliente;
+            Socket cliente;// por el puerto 8080
             AnalizadorLexicoError lex;
             parser3 parser;
             StringReader reader;
 
             while (true) {
-                
+                // el cliente se queda esperando 
                 cliente = servidor.accept();
                 DataInputStream flujo = new DataInputStream(cliente.getInputStream());
                 String mensajeRecibido;
@@ -85,12 +85,12 @@ public class AreaTrabajo extends javax.swing.JInternalFrame implements Runnable{
                 lex = new AnalizadorLexicoError(reader);
                 parser = new parser3(lex, textoEntrada);
                 parser.parse();
-                cliente.close();
+                cliente.close();// recibe el mensaje y lo parsea
             }
 
         } catch (IOException ex) {
-            ex.printStackTrace();
-        }catch (Exception ex) {
+            ex.printStackTrace();//muestra el error
+        }catch (Exception ex) {//muestra el error
             textoEntrada.append("\nOCURRIO UN ERROR AL LEER EL MENSAJE DEL SERVIDOR");
             
         }

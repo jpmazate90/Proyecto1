@@ -21,16 +21,16 @@ import javax.swing.table.DefaultTableModel;
  * @author jcsr
  */
 public class Acciones {
-    
+    // arreglo de usuarios
     private static ArrayList<Usuario> usuarios = new ArrayList<>();
     private static boolean ERROR = false;
-    
+    // sirve para iniciar sesion 
     public boolean inicioSesion (Usuario usuario){
         boolean existe=false;
         for (int i = 0; i < usuarios.size(); i++) {
             if(usuarios.get(i).getNombre().equals(usuario.getNombre())){
                 if(usuarios.get(i).getContrasena().equals(usuario.getContrasena())){
-                    existe = true;
+                    existe = true;// verifica si hizo match el usuario y la contrasena
                 }else{
                     existe = false;
                 }
@@ -40,13 +40,13 @@ public class Acciones {
         }
         return existe;
     }
-    
+    // verifica si existe un usuario
     public boolean verificarUsuario(Usuario usuario){
         boolean existe=false;
         for (int i = 0; i < usuarios.size(); i++) {
             if(usuarios.get(i).getNombre().equals(usuario.getNombre())){
                 existe = true;
-                break;
+                break;// mira si el nombre de usuario existe en el sistema
             }
         }
         if(existe == true){
@@ -55,12 +55,12 @@ public class Acciones {
             return true;
         }        
     }
-    
+    // sirve para crear el usuario lo agrega al arreglo
     public void crearUsuario(Usuario usuario){
         usuarios.add(usuario);
-        actualizarArchivo();
+        actualizarArchivo();// guarda la informacion de usuarios en la base de datos del usuario
     }
-    
+    // sirve para borrar un usuario en especifico
     public void borrarUsuario(String usuario){
         for (int i = 0; i < usuarios.size(); i++) {
             if(usuarios.get(i).getNombre().equals(usuario)){
@@ -71,7 +71,7 @@ public class Acciones {
         JOptionPane.showMessageDialog(null, "SE ELIMINO CORRECTAMENTE EL USUAIRO:"+usuario);
         actualizarArchivo();
     }
-    
+    // sirve para llenar la tabla de usuarios
     public void llenarUsuarios(DefaultTableModel modelo){
         String datos[] = new String[2];
         for (int i = 0; i < usuarios.size(); i++) {
@@ -83,7 +83,7 @@ public class Acciones {
     }
     
     
-    
+    // sirve para actualizar la base de datos
     public void actualizarArchivo(){
         try {
             File archivo = new File("usuarios.txt");
@@ -98,7 +98,7 @@ public class Acciones {
             String corcheteAbierto = "[";
             String corcheteCerrado = "]";
             BufferedWriter escritor = new BufferedWriter(reader);
-            for (int i = 0; i < usuarios.size(); i++) {
+            for (int i = 0; i < usuarios.size(); i++) {// recorre el arreglo de usuarios y lo introduce al archivo de usuarios
                 escritor.write(inicioUsuario);
                 escritor.write("\n\t");
                 escritor.write(inicioNombre);

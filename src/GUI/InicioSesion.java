@@ -15,6 +15,7 @@ import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
 public class InicioSesion extends javax.swing.JInternalFrame {
+    // atributos privados de la clase
     private Acciones accion;
     private File archivoUsuarios;
     private final String DIRECCION = "usuarios.txt";
@@ -24,6 +25,7 @@ public class InicioSesion extends javax.swing.JInternalFrame {
     private JDesktopPane escritorio;
     
     
+    // constructor
     public InicioSesion(JDesktopPane escritorio) {
         initComponents();
         ArrayList<Usuario> usuarios = Acciones.getUsuarios();
@@ -32,21 +34,22 @@ public class InicioSesion extends javax.swing.JInternalFrame {
         this.escritorio= escritorio;
         accion = new Acciones();
         archivoUsuarios = new File(DIRECCION);
-        try {
+        try {// carga los usuarios al cliente
             reader = new FileReader(archivoUsuarios);
             lexUsuarios = new AnalizadorLexicoUsuarios(reader);
             parser = new parser2(lexUsuarios);
             parser.parse();
-        } catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException ex) {//muestra el error
             System.out.println("PROBLEMA AL ABRIR EL ARCHIVO DE USUARIOS");
-        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,"PROBLEMA AL ABRIR EL ARCHIVO DE USUARIOS");
+        } catch (Exception ex) {//muestra el error
             System.out.println("HUBO UN PROBLEMA AL PARSEAR LOS USUARIOS");
         }
         
         
     }
     
-    public void inicio(){
+    public void inicio(){//mira si coincide la informacion de los usuarios
         String nombre = textoNombre.getText();
         String contrasena = textoContrasena.getText();
         Usuario usuario = new Usuario(nombre, contrasena);
@@ -63,15 +66,15 @@ public class InicioSesion extends javax.swing.JInternalFrame {
         
     }
     
-    public void crear(){
+    public void crear(){// sirve para crear un usuario
         String nombre = textoNombre.getText();
         String contrasena = textoContrasena.getText();
         Usuario usuario = new Usuario(nombre, contrasena);
         boolean match = accion.verificarUsuario(usuario);
-        if(match == true){
-            accion.crearUsuario(usuario);
+        if(match == true){// si hizo match entonces crea el usuario
+            accion.crearUsuario(usuario);//muestra el error
             JOptionPane.showMessageDialog(null,"SE CREO CORRECTAMENTE EL USUARIO: "+usuario.getNombre());
-        }else{
+        }else{//muestra el error
             JOptionPane.showMessageDialog(null,"EL USUARIO "+nombre+" YA EXISTE, NO SE PUEDE CREAR");
         }
     }
